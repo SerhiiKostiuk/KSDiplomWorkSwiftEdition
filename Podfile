@@ -8,5 +8,7 @@ target 'KSDiplomWorkSwiftEdition' do
   pod 'HSegmentControl'
   pod 'IQKeyboardManagerSwift'
   pod 'MJCalendar'
+  pod 'MagicalRecord'
+  pod 'NVActivityIndicatorView'
   
 end
