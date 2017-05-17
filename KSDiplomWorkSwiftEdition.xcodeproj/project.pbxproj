@@ -10,6 +10,14 @@
 		3189DBB3F0208EEE20D5545C /* Pods_KSDiplomWorkSwiftEdition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5B3D5352AA72A07C313D009 /* Pods_KSDiplomWorkSwiftEdition.framework */; };
 		CD5F75E61EB36497005BFE1D /* NumPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5F75E51EB36497005BFE1D /* NumPadViewController.swift */; };
 		CD5F75E91EB37543005BFE1D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5F75E81EB37543005BFE1D /* User.swift */; };
+		CD5F75EC1EB37A50005BFE1D /* diplomWork.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD5F75EA1EB37A50005BFE1D /* diplomWork.xcdatamodeld */; };
+		CD5F75F91EB38369005BFE1D /* Transaction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5F75F51EB38369005BFE1D /* Transaction+CoreDataClass.swift */; };
+		CD5F75FA1EB38369005BFE1D /* Transaction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5F75F61EB38369005BFE1D /* Transaction+CoreDataProperties.swift */; };
+		CD5F75FB1EB38369005BFE1D /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5F75F71EB38369005BFE1D /* Category+CoreDataClass.swift */; };
+		CD5F75FC1EB38369005BFE1D /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5F75F81EB38369005BFE1D /* Category+CoreDataProperties.swift */; };
+		CD64670A1EBB397600EFAA60 /* expense.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD6467081EBB397600EFAA60 /* expense.plist */; };
+		CD64670B1EBB397600EFAA60 /* income.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD6467091EBB397600EFAA60 /* income.plist */; };
+		CD64670E1EBB3A3900EFAA60 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD64670D1EBB3A3900EFAA60 /* CoreDataManager.swift */; };
 		CD7263311EB1FB4F00506566 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7263301EB1FB4F00506566 /* HomeViewController.swift */; };
 		CD8FBBDA1EADFBD500BFC7B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8FBBD01EADFBD500BFC7B2 /* AppDelegate.swift */; };
 		CD8FBBDB1EADFBD500BFC7B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD8FBBD21EADFBD500BFC7B2 /* Assets.xcassets */; };
@@ -29,6 +37,14 @@
 		B5B3D5352AA72A07C313D009 /* Pods_KSDiplomWorkSwiftEdition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KSDiplomWorkSwiftEdition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD5F75E51EB36497005BFE1D /* NumPadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumPadViewController.swift; sourceTree = "<group>"; };
 		CD5F75E81EB37543005BFE1D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CD5F75EB1EB37A50005BFE1D /* diplomWork.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = diplomWork.xcdatamodel; sourceTree = "<group>"; };
+		CD5F75F51EB38369005BFE1D /* Transaction+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CD5F75F61EB38369005BFE1D /* Transaction+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CD5F75F71EB38369005BFE1D /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CD5F75F81EB38369005BFE1D /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CD6467081EBB397600EFAA60 /* expense.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = expense.plist; sourceTree = "<group>"; };
+		CD6467091EBB397600EFAA60 /* income.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = income.plist; sourceTree = "<group>"; };
+		CD64670D1EBB3A3900EFAA60 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		CD7263301EB1FB4F00506566 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CD8FBBBA1EADFAD200BFC7B2 /* KSDiplomWorkSwiftEdition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KSDiplomWorkSwiftEdition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8FBBD01EADFBD500BFC7B2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,9 +93,22 @@
 		CD5F75E71EB36FCD005BFE1D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CD5F75F51EB38369005BFE1D /* Transaction+CoreDataClass.swift */,
+				CD5F75F61EB38369005BFE1D /* Transaction+CoreDataProperties.swift */,
+				CD5F75F71EB38369005BFE1D /* Category+CoreDataClass.swift */,
+				CD5F75F81EB38369005BFE1D /* Category+CoreDataProperties.swift */,
 				CD5F75E81EB37543005BFE1D /* User.swift */,
+				CD5F75EA1EB37A50005BFE1D /* diplomWork.xcdatamodeld */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		CD64670C1EBB3A2400EFAA60 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				CD64670D1EBB3A3900EFAA60 /* CoreDataManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		CD72632F1EB1FB3F00506566 /* HomeViewConroller */ = {
@@ -141,6 +170,7 @@
 		CD8FBBD71EADFBD500BFC7B2 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				CD64670C1EBB3A2400EFAA60 /* Managers */,
 				CD5F75E71EB36FCD005BFE1D /* Models */,
 				CD8FBBDF1EADFE8100BFC7B2 /* Library */,
 				CD8FBBE11EADFE8100BFC7B2 /* UI */,
@@ -151,6 +181,8 @@
 		CD8FBBD81EADFBD500BFC7B2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CD6467081EBB397600EFAA60 /* expense.plist */,
+				CD6467091EBB397600EFAA60 /* income.plist */,
 				CDC235931EAF4C1C006A9922 /* Bridging-Header.h */,
 				CD8FBBD91EADFBD500BFC7B2 /* Info.plist */,
 			);
@@ -265,9 +297,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD64670B1EBB397600EFAA60 /* income.plist in Resources */,
 				CD8FBBDB1EADFBD500BFC7B2 /* Assets.xcassets in Resources */,
 				CD8FBBDD1EADFBD500BFC7B2 /* Main.storyboard in Resources */,
 				CD8FBBDC1EADFBD500BFC7B2 /* LaunchScreen.storyboard in Resources */,
+				CD64670A1EBB397600EFAA60 /* expense.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,12 +364,18 @@
 				CD8FBBE41EADFEEB00BFC7B2 /* LoginViewController.swift in Sources */,
 				CD8FBBDA1EADFBD500BFC7B2 /* AppDelegate.swift in Sources */,
 				CDC2359B1EAF7F3F006A9922 /* Functions.swift in Sources */,
+				CD5F75F91EB38369005BFE1D /* Transaction+CoreDataClass.swift in Sources */,
+				CD5F75EC1EB37A50005BFE1D /* diplomWork.xcdatamodeld in Sources */,
 				CDC235961EAF6A85006A9922 /* Colors.swift in Sources */,
+				CD5F75FC1EB38369005BFE1D /* Category+CoreDataProperties.swift in Sources */,
 				CD7263311EB1FB4F00506566 /* HomeViewController.swift in Sources */,
 				CD8FBBE81EAE328100BFC7B2 /* SignInViewController.swift in Sources */,
+				CD5F75FB1EB38369005BFE1D /* Category+CoreDataClass.swift in Sources */,
 				CD5F75E61EB36497005BFE1D /* NumPadViewController.swift in Sources */,
 				CDC235991EAF6AD0006A9922 /* UIColor+RGB.swift in Sources */,
 				CD5F75E91EB37543005BFE1D /* User.swift in Sources */,
+				CD64670E1EBB3A3900EFAA60 /* CoreDataManager.swift in Sources */,
+				CD5F75FA1EB38369005BFE1D /* Transaction+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +544,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CD5F75EA1EB37A50005BFE1D /* diplomWork.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CD5F75EB1EB37A50005BFE1D /* diplomWork.xcdatamodel */,
+			);
+			currentVersion = CD5F75EB1EB37A50005BFE1D /* diplomWork.xcdatamodel */;
+			path = diplomWork.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CD8FBBB21EADFAD200BFC7B2 /* Project object */;
 }
