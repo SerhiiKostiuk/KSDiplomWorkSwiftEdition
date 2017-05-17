@@ -8,11 +8,13 @@
 
 import UIKit
 import MJCalendar
+import NVActivityIndicatorView
 
 class HomeViewController: UIViewController, MJCalendarViewDelegate {
 
     @IBOutlet weak var calendarView: MJCalendarView!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     
     class func create() -> HomeViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -22,9 +24,13 @@ class HomeViewController: UIViewController, MJCalendarViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        activityIndicator.startAnimating()
         setUpCalendarConfiguration()
-        
-      
+        CoreDataManager.preloadCategories { (didSave) in
+//            sleep(3)
+            self.activityIndicator.stopAnimating()
+
+        }
         
         // Do any additional setup after loading the view.
     }

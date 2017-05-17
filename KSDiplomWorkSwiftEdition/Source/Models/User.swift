@@ -11,6 +11,8 @@ import Foundation
 class User {
     var defaultCategories: Array<Any> = []
     
-    
+    init() {
+        
+    }
     
 }
