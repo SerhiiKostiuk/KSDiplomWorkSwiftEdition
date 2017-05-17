@@ -14,3 +14,4 @@
 
 @import VK_ios_sdk;
 @import SDWebImage;
+@import MagicalRecord;
