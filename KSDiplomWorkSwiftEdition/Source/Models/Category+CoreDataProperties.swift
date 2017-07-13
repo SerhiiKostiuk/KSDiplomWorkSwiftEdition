@@ -9,14 +9,14 @@
 import Foundation
 import CoreData
 
-enum CategoryType {
-    case ExpenceCategory
+enum CategoryType: Int {
+    case ExpenceCategory = 1
     case IncomeCategory
 }
 
 extension Category {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Category> {
+    @nonobjc public class func categoryFetchRequest() -> NSFetchRequest<Category> {
         return NSFetchRequest<Category>(entityName: "Category")
     }
 
