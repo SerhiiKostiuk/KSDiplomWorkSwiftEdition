@@ -15,6 +15,7 @@ class HomeViewController: UIViewController, MJCalendarViewDelegate {
     @IBOutlet weak var calendarView: MJCalendarView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
+    @IBOutlet weak var activityBackgroundView: UIView!
     
     class func create() -> HomeViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -24,22 +25,31 @@ class HomeViewController: UIViewController, MJCalendarViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.bringSubview(toFront: activityBackgroundView)
+        
         activityIndicator.startAnimating()
         setUpCalendarConfiguration()
-        CoreDataManager.preloadCategories { (didSave) in
-//            sleep(3)
-            self.activityIndicator.stopAnimating()
-
-        }
+        
+        navigationController?.isNavigationBarHidden = true
         
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+//        sleep(3)
+
+        if UserDefaults.standard.bool(forKey: "categoriesPreload") == false {
+            CoreDataManager.preloadCategories { (didSave) in
+                //
+                self.activityIndicator.stopAnimating()
+            }
+        } else {
+            activityBackgroundView.removeFromSuperview()
+            activityIndicator.stopAnimating()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "categoriesPreload"), object: nil)
+        }
+    }
 
     func setUpCalendarConfiguration() {
         self.calendarView.calendarDelegate = self

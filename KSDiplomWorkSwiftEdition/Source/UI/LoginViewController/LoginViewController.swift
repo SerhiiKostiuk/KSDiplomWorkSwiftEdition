@@ -92,7 +92,6 @@ class LoginViewController: UIViewController, HSegmentControlDataSource {
             presentController(controller: viewControllers[1])
         }
     }
-  
 }
 
 extension LoginViewController:signUpDelegate {
@@ -104,7 +103,5 @@ extension LoginViewController:signUpDelegate {
         controller.loginTextField.text = username as? String
         controller.passwordTextField.text = pass as? String
         presentController(controller: controller)
-        
     }
-    
 }
