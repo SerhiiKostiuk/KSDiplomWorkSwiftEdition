@@ -56,19 +56,21 @@ class CoreDataManager {
     
     class func getPreloadedCategories(type:CategoryType) -> Array<Any> {
         let categoryType : Int16 = Int16(type .rawValue)
-//        let preloadedCategories = Category.mr_findAll() as! [Category]
         let preloadedCategories = Category.mr_find(byAttribute: "transctionType", withValue: categoryType, andOrderBy: "order", ascending: true)
-
-//        var expenceCategories: Array<Any> = []
-        
-//        for category in preloadedCategories! {
-//            if category.transctionType == categoryType {
-//                expenceCategories.append(category)
-//            }
-//        }
-        
-        print(preloadedCategories)
 
         return preloadedCategories!
     }
+    
+    class func saveAmount(amount: Float, for category: Category) {
+    MagicalRecord.save({ (localContext) in
+        let transaction = Transaction.mr_createEntity(in: localContext)!
+        
+        transaction.time = NSDate()
+        transaction.amount = Int64(amount)
+        transaction.category = category.mr_(in: localContext)
+        
+        })
+    }
+    
+    
 }
