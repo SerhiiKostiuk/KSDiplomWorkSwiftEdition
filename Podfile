@@ -7,7 +7,7 @@ target 'KSDiplomWorkSwiftEdition' do
 #  pod 'Segmentio'
   pod 'HSegmentControl'
   pod 'IQKeyboardManagerSwift'
-  pod 'MJCalendar'
+  pod 'JTAppleCalendar'
   pod 'MagicalRecord'
   pod 'NVActivityIndicatorView'
   
