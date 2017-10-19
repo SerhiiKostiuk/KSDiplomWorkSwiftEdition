@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3189DBB3F0208EEE20D5545C /* Pods_KSDiplomWorkSwiftEdition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5B3D5352AA72A07C313D009 /* Pods_KSDiplomWorkSwiftEdition.framework */; };
+		CD0489851F27755500828972 /* String+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0489841F27755500828972 /* String+Currency.swift */; };
+		CD29F9FF1F28B30D00B31187 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD29F9FE1F28B30D00B31187 /* CalendarCell.swift */; };
 		CD41513F1ED877CB0060AA80 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4151371ED877CB0060AA80 /* CategoriesViewController.swift */; };
 		CD4151401ED877CB0060AA80 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4151381ED877CB0060AA80 /* HomeViewController.swift */; };
 		CD4151411ED877CB0060AA80 /* NumPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4151391ED877CB0060AA80 /* NumPadViewController.swift */; };
@@ -39,6 +41,8 @@
 		51894B342C0F50D668B75308 /* Pods-KSDiplomWorkSwiftEdition.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KSDiplomWorkSwiftEdition.release.xcconfig"; path = "Pods/Target Support Files/Pods-KSDiplomWorkSwiftEdition/Pods-KSDiplomWorkSwiftEdition.release.xcconfig"; sourceTree = "<group>"; };
 		5D155B2BA5AFC40A41066D87 /* Pods-KSDiplomWorkSwiftEdition.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KSDiplomWorkSwiftEdition.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KSDiplomWorkSwiftEdition/Pods-KSDiplomWorkSwiftEdition.debug.xcconfig"; sourceTree = "<group>"; };
 		B5B3D5352AA72A07C313D009 /* Pods_KSDiplomWorkSwiftEdition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KSDiplomWorkSwiftEdition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD0489841F27755500828972 /* String+Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Currency.swift"; sourceTree = "<group>"; };
+		CD29F9FE1F28B30D00B31187 /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		CD4151371ED877CB0060AA80 /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		CD4151381ED877CB0060AA80 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CD4151391ED877CB0060AA80 /* NumPadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumPadViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +137,7 @@
 			children = (
 				CD4151451ED877FA0060AA80 /* CategoryCollectionViewCell.swift */,
 				CD6C1BB71EE01D1600CAE9BA /* NumPadCollectionViewCell.swift */,
+				CD29F9FE1F28B30D00B31187 /* CalendarCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -250,6 +255,7 @@
 			children = (
 				CDC235981EAF6AD0006A9922 /* UIColor+RGB.swift */,
 				CD6C1BB51EE01CDE00CAE9BA /* UIImage+Color.swift */,
+				CD0489841F27755500828972 /* String+Currency.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -383,6 +389,7 @@
 				CD8FBBDA1EADFBD500BFC7B2 /* AppDelegate.swift in Sources */,
 				CDC2359B1EAF7F3F006A9922 /* Functions.swift in Sources */,
 				CD41513F1ED877CB0060AA80 /* CategoriesViewController.swift in Sources */,
+				CD0489851F27755500828972 /* String+Currency.swift in Sources */,
 				CD4151421ED877CB0060AA80 /* LoginViewController.swift in Sources */,
 				CD4151461ED877FA0060AA80 /* CategoryCollectionViewCell.swift in Sources */,
 				CD6C1BB61EE01CDE00CAE9BA /* UIImage+Color.swift in Sources */,
@@ -396,6 +403,7 @@
 				CDC235991EAF6AD0006A9922 /* UIColor+RGB.swift in Sources */,
 				CD5F75E91EB37543005BFE1D /* User.swift in Sources */,
 				CD64670E1EBB3A3900EFAA60 /* CoreDataManager.swift in Sources */,
+				CD29F9FF1F28B30D00B31187 /* CalendarCell.swift in Sources */,
 				CD4151431ED877CB0060AA80 /* SignInViewController.swift in Sources */,
 				CD4151411ED877CB0060AA80 /* NumPadViewController.swift in Sources */,
 				CD4151401ED877CB0060AA80 /* HomeViewController.swift in Sources */,
