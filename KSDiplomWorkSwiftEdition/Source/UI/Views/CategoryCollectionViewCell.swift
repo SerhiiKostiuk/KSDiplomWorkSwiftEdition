@@ -12,6 +12,8 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var categoryImageView: UIImageView!
     @IBOutlet weak var categoryTitleLabel: UILabel!
+    @IBOutlet weak var dailyCountBackgroundImageView: UIImageView!
+    @IBOutlet weak var dailyCountLabel: UILabel!
     
 
     func fillCellWith(category:Category) {

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol numPadDelegate: class {
-    func numberTaped(button: UIButton)
+    func addTransaction(transaction: Float)
     func hideNumPad()
 }
 
@@ -42,6 +42,15 @@ class NumPadViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     @IBAction func AddValueAction(_ sender: Any) {
+        let string = inputTextField.text?.replacingOccurrences(of: "$", with: "")
+        
+        if string == "0.00" || string == "" {
+            return
+        }
+
+        self.delegate?.addTransaction(transaction:(string as NSString?)!.floatValue)
+        
+        self.inputTextField.text = ""
     }
     
 
@@ -96,6 +105,7 @@ class NumPadViewController: UIViewController, UICollectionViewDataSource, UIColl
         inputTextField.text = inputString.currency()
     }
     
+    
     func isDeleteButtonTaped(string: String) -> String {
         
         var curentText = string
@@ -106,22 +116,5 @@ class NumPadViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
 }
 
-extension String {
-    
-    func currency() -> String? {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.minimumFractionDigits = 2
-        formatter.maximumFractionDigits = 2
-        let digits = NSDecimalNumber(string: sanitized())
-        let place = NSDecimalNumber(value: powf(10, 2))
-        return formatter.string(from: digits.dividing(by: place))
-    }
-    
-    func sanitized() -> String {
-        return String(self.characters.filter { "01234567890".characters.contains($0) })
-    }
-    
-}
 
 

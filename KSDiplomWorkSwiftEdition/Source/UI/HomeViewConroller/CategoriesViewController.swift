@@ -8,11 +8,19 @@
 
 import UIKit
 
-class CategoriesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+protocol categoriesDelegate: class {
+
+}
+
+class CategoriesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
+ {
     
     var categories: [Category]!
     var numPadVC:NumPadViewController?
+    var selectedCategory: NSInteger!
     
+    weak var delegate:categoriesDelegate?
+
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -56,6 +64,12 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
         hideNumPadVC(hide: false)
         numPadVC?.categoryImageView.image = cell.categoryImageView.image
         numPadVC?.cagegoryTitleLabel.text = cell.categoryTitleLabel.text
+        
+        selectedCategory = indexPath.item
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: CGFloat((collectionView.frame.size.width / 4) - 4), height: CGFloat(100))
     }
     
     func hideNumPadVC(hide: Bool) {
@@ -71,9 +85,10 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
             }, completion: nil)
             
         } else {
+            selectedCategory = 99
             UIView.animate(withDuration: 0.5, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
                 let frame = CGRect.init(x:self.view.frame.size.width, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
-                let numpadView = self.view.subviews[3]
+                let numpadView = self.view.subviews[4]
                 
                 numpadView.frame = frame
             }, completion: nil)
@@ -81,9 +96,14 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
     }
 }
 
-extension CategoriesViewController:numPadDelegate {
-    func numberTaped(button: UIButton) {
-        print("button title \(String(describing: button.titleLabel?.text))")
+extension CategoriesViewController : numPadDelegate {
+    func addTransaction(transaction: Float) {
+        print("transacton amount \(String(describing: transaction))")
+        
+        CoreDataManager.saveAmount(amount: transaction, for: categories[selectedCategory])
+        
+        hideNumPadVC(hide: true)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "addTransaction"), object: nil)
     }
     
     func hideNumPad() {

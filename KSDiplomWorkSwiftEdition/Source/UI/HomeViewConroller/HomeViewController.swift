@@ -7,16 +7,21 @@
 //
 
 import UIKit
-import MJCalendar
+import JTAppleCalendar
 import NVActivityIndicatorView
 
-class HomeViewController: UIViewController, MJCalendarViewDelegate {
+class HomeViewController: UIViewController, JTAppleCalendarViewDelegate, JTAppleCalendarViewDataSource {
 
-    @IBOutlet weak var calendarView: MJCalendarView!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     @IBOutlet weak var activityBackgroundView: UIView!
     
+    let formater = DateFormatter()
+    let selectedMonthColor = UIColor.white
+    let monthColor = UIColor.black
+    let outsideMonthColor = UIColor.lightGray
+
     class func create() -> HomeViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: String(describing: self)) as! HomeViewController
@@ -28,17 +33,22 @@ class HomeViewController: UIViewController, MJCalendarViewDelegate {
         view.bringSubview(toFront: activityBackgroundView)
         
         activityIndicator.startAnimating()
-        setUpCalendarConfiguration()
         
         navigationController?.isNavigationBarHidden = true
         
+        setupCalendarView()
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.selectTransactionOnCalendar),
+                                               name: NSNotification.Name(rawValue: "addTransaction"),
+                                               object: nil)
+
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        sleep(3)
-
+        
         if UserDefaults.standard.bool(forKey: "categoriesPreload") == false {
             CoreDataManager.preloadCategories { (didSave) in
                 //
@@ -51,94 +61,83 @@ class HomeViewController: UIViewController, MJCalendarViewDelegate {
         }
     }
 
-    func setUpCalendarConfiguration() {
-        self.calendarView.calendarDelegate = self
+    func setupCalendarView() {
+        calendarView.minimumLineSpacing = 0
+        calendarView.minimumInteritemSpacing = 0
+        let currentDate = Date()
+        calendarView.scrollToDate(currentDate,animateScroll: false)
         
-        // Set displayed period type. Available types: Month, ThreeWeeks, TwoWeeks, OneWeek
-        self.calendarView.configuration.periodType = .month
-        
-        // Set shape of day view. Available types: Circle, Square
-        self.calendarView.configuration.dayViewType = .circle
-        
-        // Set selected day display type. Available types:
-        // Border - Only border is colored with selected day color
-        // Filled - Entire day view is filled with selected day color
-        self.calendarView.configuration.selectedDayType = .border
-        
-        // Set width of selected day border. Relevant only if selectedDayType = .Border
-        self.calendarView.configuration.selectedBorderWidth = 1
-        
-        // Set day text color
-        self.calendarView.configuration.dayTextColor = UIColor.red
-        
-        // Set day background color
-        self.calendarView.configuration.dayBackgroundColor = UIColor.blue
-        
-        // Set selected day text color
-        self.calendarView.configuration.selectedDayTextColor = UIColor.white
-        
-        // Set selected day background color
-        self.calendarView.configuration.selectedDayBackgroundColor = UIColor.gray
-        
-        // Set other month day text color. Relevant only if periodType = .Month
-        self.calendarView.configuration.otherMonthTextColor = UIColor.green
-        // Set other month background color. Relevant only if periodType = .Month
-        self.calendarView.configuration.otherMonthBackgroundColor = UIColor.brown
-        
-        // Set week text color
-        self.calendarView.configuration.weekLabelTextColor = UIColor.cyan
-        // Set start day. Available type: .Monday, Sunday
-        self.calendarView.configuration.startDayType = .monday
-        
-        // Set number of letters presented in the week days label
-        self.calendarView.configuration.lettersInWeekDayLabel = .one
-        
-        // Set day text font
-        self.calendarView.configuration.dayTextFont = UIFont.systemFont(ofSize: 12)
-        
-        //Set week's day name font
-        self.calendarView.configuration.weekLabelFont = UIFont.systemFont(ofSize: 12)
-        
-        //Set day view size. It includes border width if selectedDayType = .Border
-        self.calendarView.configuration.dayViewSize = CGSize(width: 24, height: 24)
-        
-        //Set height of row with week's days
-        self.calendarView.configuration.rowHeight = 30
-        
-        // Set height of week's days names view
-        self.calendarView.configuration.weekLabelHeight = 25
-        
-        // To commit all configuration changes execute reloadView method
-        self.calendarView.reloadView()
+        calendarView.selectDates([currentDate], triggerSelectionDelegate: true, keepSelectionIfMultiSelectionAllowed: true)
+    }
+    
+    func handleCellSelected(view: JTAppleCell?, cellState: CellState) {
+        guard let cell = view as? CalendarCell else { return }
+
+        if cellState.isSelected {
+            cell.selectedView.isHidden = false
+        } else {
+            cell.selectedView.isHidden = true
+        }
     }
 
-    
-    //MARK: MJCalendarViewDelegate
-    func calendar(_ calendarView: MJCalendarView, didChangePeriod periodDate: Date, bySwipe: Bool) {
-        // Sets month name according to presented dates
-//        self.setTitleWithDate(periodDate)
-//        
-//        // bySwipe diffrentiate changes made from swipes or select date method
-//        if bySwipe {
-//            // Scroll to relevant date in tableview
-//            self.scrollTableViewToDate(periodDate)
-//        }
+    func handleCellTextColor(view: JTAppleCell?, cellState: CellState) {
+        guard let cell = view as? CalendarCell else { return }
+
+        if cellState.isSelected {
+            cell.dateLabel.textColor = selectedMonthColor
+
+            let todaysDate = Date()
+            if todaysDate == cellState.date
+            {
+                cell.dateLabel.textColor = UIColor.red
+            }
+        } else {
+            if cellState.dateBelongsTo == .thisMonth {
+                cell.dateLabel.textColor = monthColor
+            } else {
+                cell.dateLabel.textColor = outsideMonthColor
+            }
+        }
     }
     
-    func calendar(_ calendarView: MJCalendarView, backgroundForDate date: Date) -> UIColor? {
-        return UIColor.yellow
+    func selectTransactionOnCalendar() {
+//       self.calendarView.selectDate(Date())
     }
-    
-    func calendar(_ calendarView: MJCalendarView, textColorForDate date: Date) -> UIColor? {
-        return UIColor.darkGray
-    }
-    
-    func calendar(_ calendarView: MJCalendarView, didSelectDate date: Date) {
-//        self.scrollTableViewToDate(date)
-    }
-    
-    
   
+    func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
+        formater.dateFormat = "yyyy MM dd"
+        formater.timeZone = Calendar.current.timeZone
+        formater.locale = Calendar.current.locale
+        
+        let startDate = formater.date(from: "2017 01 01")!
+        let endDate = formater.date(from: "2017 12 31")!
+        
+        let parameters = ConfigurationParameters(startDate: startDate, endDate: endDate)
+        
+        return parameters
+        
+    }
+    
+    func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
+        let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CalendarCell", for: indexPath) as! CalendarCell
+        cell.dateLabel.text = cellState.text
+        
+        handleCellSelected(view: cell, cellState: cellState)
+        handleCellTextColor(view: cell, cellState: cellState)
+        return cell
+    }
 
+    func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+        handleCellSelected(view: cell, cellState: cellState)
+        handleCellTextColor(view: cell, cellState: cellState)
+
+    }
+    
+    func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+        handleCellSelected(view: cell, cellState: cellState)
+        handleCellTextColor(view: cell, cellState: cellState)
+
+        
+    }
 }
 
